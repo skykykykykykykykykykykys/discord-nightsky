@@ -1,28 +1,32 @@
 // require the discord.js module
 const Discord = require('discord.js');
 const config = require('../config.json');
+const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
 
-// create a new Discord client
-const client = new Discord.Client();
 
-// when the client is ready, run this code
-// this event will only trigger one time after logging in
-client.once('ready', () => {
-	console.log('Halo weebs!');
-});
+class BotClient extends AkairoClient {
+    constructor() {
+        super({
+            // Options for Akairo go here.
+            ownerID: ['195954094282637312', '213603497910730762']
+        }, {
+            // Options for discord.js goes here.
+            disableMentions: 'everyone'
+        });
 
-//listener
+        this.commandHandler = new CommandHandler(this, {
+            // Options for the command handler goes here.
+            directory: 'src/commands/',
+            prefix: config.prefix // or ['?', '!']
+        });
+        this.listenerHandler = new ListenerHandler(this, {
+            directory: 'src/listeners/'
+        });
 
-client.on('message', message => {
-	if (message.content === '!ping') {
-        // send back "Pong." to the channel the message was sent in
-        message.channel.send('Pong.')
-    } else if (message.content === '!weeb') {
-        message.channel.send(':ariqout:')
+        this.commandHandler.useListenerHandler(this.listenerHandler);
+        this.listenerHandler.loadAll();
     }
-});
+}
 
-
-
-// login to Discord with your app's token
+const client = new BotClient();
 client.login(config.token);
