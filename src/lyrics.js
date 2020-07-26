@@ -2,10 +2,9 @@ const scraper = require("azlyrics-scraper");
 
 function removeSpace(text) {
     return text.split(" ").join("");
-}
+};
 
-export function getLyrics(artist, title) {
-
+function getLyrics(artist, title) {
     artist = removeSpace(artist);
     title = removeSpace(title);
 
@@ -16,4 +15,8 @@ export function getLyrics(artist, title) {
     }).catch(error => {
         console.log(error)
     });
-};
+}
+
+module.exports = {
+    getLyrics
+}
