@@ -1,20 +1,11 @@
-const scraper = require("azlyrics-scraper");
+const lyricsFinder = require('lyrics-finder');
 
-function removeSpace(text) {
-    return text.split(" ").join("");
-};
+async function getLyrics(artist, title) {
 
-function getLyrics(artist, title) {
-    artist = removeSpace(artist);
-    title = removeSpace(title);
-
-    url = 'https://www.azlyrics.com/lyrics/'+ artist + '/' + title + '.html'
-    scraper.getLyricFromLink(url).then(result => {
-        console.log(result.join(""));
-        return result;
-    }).catch(error => {
-        console.log(error)
-    });
+    let lyrics = await lyricsFinder(artist, title) || "Not Found!";
+    console.log(lyrics);
+    return lyrics;
+    
 }
 
 module.exports = {

@@ -25,7 +25,7 @@ client.on('message', message => {
         message.channel.send('Pong.')
     } else if (message.content === '!weeb') {
         console.log(message.content)
-        console.log(lyrics.getLyrics("Aimer", "Ref:rain"))
+        console.log(lyrics.getLyrics("one ok rock", "the beginning"))
         message.channel.send("test")
     }
 });
