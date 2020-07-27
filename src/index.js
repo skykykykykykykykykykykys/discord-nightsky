@@ -2,6 +2,7 @@
 const config = require('../config');
 const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
 
+const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
 
 class BotClient extends AkairoClient {
     constructor() {
