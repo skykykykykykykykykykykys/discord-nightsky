@@ -30,6 +30,7 @@ class BotClient extends AkairoClient {
             commandHandler: this.commandHandler,
             listenerHandler: this.listenerHandler,
         });
+        this.queue = new Map();
     }
 }
 
