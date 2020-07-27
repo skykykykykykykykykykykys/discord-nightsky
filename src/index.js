@@ -1,5 +1,6 @@
 // require the discord.js module
-const config = require('../config.json');
+const config = require('../config');
+const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
 
 const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
 
@@ -30,6 +31,7 @@ class BotClient extends AkairoClient {
             commandHandler: this.commandHandler,
             listenerHandler: this.listenerHandler,
         });
+        this.queue = new Map();
     }
 }
 
