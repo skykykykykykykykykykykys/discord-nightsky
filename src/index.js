@@ -1,5 +1,5 @@
 // require the discord.js module
-const config = require('../config.json');
+const config = require('../config');
 const { AkairoClient, CommandHandler, ListenerHandler } = require('discord-akairo');
 
 

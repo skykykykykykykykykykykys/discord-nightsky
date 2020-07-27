@@ -5,7 +5,7 @@ const axios = require('axios')
 const querystring = require('querystring')
 
 const lyrics = require('./lyrics');
-const { GOOGLE_API } = require('../../config.json')
+const { GOOGLE_API } = require('../../config')
 
 
 class MusicCommand extends Command {

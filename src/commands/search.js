@@ -1,5 +1,5 @@
 const { Command } = require('discord-akairo')
-const { GOOGLE_API } = require('../../config.json')
+const { GOOGLE_API } = require('../../config')
 
 const axios = require('axios')
 const querystring = require('querystring')
