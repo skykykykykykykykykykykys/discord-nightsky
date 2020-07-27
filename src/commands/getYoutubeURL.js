@@ -1,6 +1,9 @@
 const { Command } = require('discord-akairo');
 const { GOOGLE_API } = require('../../config.json')
 
+const lyrics = require('./lyrics');
+const music = require('./music')
+
 const axios = require('axios');
 const querystring = require('querystring')
 
@@ -11,13 +14,18 @@ class SearchCommand extends Command {
         });
     }
 
-    async exec(message) {
+    async exec(message, args) {
         const params = {
             q: 'Yorushika That\'s Why I Gave Up on Music',
             part: 'id',
             maxResults: 30,
             key: GOOGLE_API,
         }
+        const songTitle = args.slice(1)
+        const songAuthor = args[0]
+
+        const lirik = await lyrics.getLyrics(songAuthor, songTitle)
+        message.channel.send(lirik)
 
         await axios.get('https://www.googleapis.com/youtube/v3/search?' + querystring.stringify(params))
             .then(function(response) {
