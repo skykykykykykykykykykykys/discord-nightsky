@@ -16,8 +16,6 @@ class MusicCommand extends Command {
     }
 
     async exec(message) {
-		console.log('masuk play bro')
-
 		const queue = message.client.queue;
 		const serverQueue = await queue.get(message.guild.id);
 
@@ -73,8 +71,9 @@ class MusicCommand extends Command {
 		const guild = message.guild;
 		const serverQueue = queue.get(message.guild.id);
 
-		const songArtist = ''
-		const songTitle = ''
+		const songArtist = ((message.toString()).split(' ').slice(1))[0]
+		const args = (message.toString()).split(' ').slice(2)
+		const songTitle = args.join(' ')
 
 		if (!song) {
 			serverQueue.voiceChannel.leave();
