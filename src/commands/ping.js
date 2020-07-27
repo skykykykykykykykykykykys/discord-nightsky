@@ -1,18 +1,19 @@
-const {Command} = require('discord-akairo');
+const { Command } = require("discord-akairo");
 
 class PingCommand extends Command {
   constructor() {
-    super('ping', {
-      aliases : [ 'ping', 'hello' ],
+    super("ping", {
+      aliases: ["ping", "hello"],
     });
   }
 
   async exec(message) {
-    const sent = await message.reply('Pong!');
-    const timeDiff = (sent.editedAt || sent.createdAt) -
-                     (message.editedAt || message.createdAt);
+    const sent = await message.reply("Pong!");
+    const timeDiff =
+      (sent.editedAt || sent.createdAt) -
+      (message.editedAt || message.createdAt);
     return message.reply([
-      'Pong!',
+      "Pong!",
       `🔂 **RTT**: ${timeDiff} ms`,
       `💟 **Heartbeat**: ${Math.round(this.client.ws.ping)} ms`,
     ]);

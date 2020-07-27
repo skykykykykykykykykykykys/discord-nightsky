@@ -1,32 +1,32 @@
-const {Command} = require('discord-akairo');
+const { Command } = require("discord-akairo");
 
 class AddCommand extends Command {
   constructor() {
-    super('add', {
-      aliases : [ 'add' ],
+    super("add", {
+      aliases: ["add"],
     });
   }
 
-  * args() {
+  *args() {
     // Notice: no `id` necessary!
     // Also notice: `yield` must be used.
-    const x = yield {type : 'number'};
+    const x = yield { type: "number" };
     const y = yield {
-      type : 'number',
+      type: "number",
     };
 
     // When finished.
-    return {x, y};
+    return { x, y };
   }
 
   exec(message) {
-    let sum = 0
-    const slicedArr = (message.toString()).split(' ').slice(1)
-    console.log(slicedArr)
+    let sum = 0;
+    const slicedArr = message.toString().split(" ").slice(1);
+    console.log(slicedArr);
     for (const item in slicedArr) {
-      console.log('Argumen ke ', [ item ], ' -- ', slicedArr[item])
-      sum += parseInt(slicedArr[item])
-      console.log(sum)
+      console.log("Argumen ke ", [item], " -- ", slicedArr[item]);
+      sum += parseInt(slicedArr[item]);
+      console.log(sum);
     }
 
     return message.reply(`The sum is ${sum}!`);
